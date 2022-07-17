@@ -1,0 +1,60 @@
+﻿@{
+    Layout = null;
+}
+
+@using BankApp.WebAdminPanel.Models.Account
+@model LoginModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/signup.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form asp-action="Login" asp-controller="Account" method="post" class="form-group">
+            <h1 style="font-size: 28px;">Login</h1>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="input-group">
+                        <input asp-for="@Model.Email" class="form-control mb-2" placeholder="Email">
+                    </div>
+                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-md-12">
+                    <input asp-for="@Model.Password" class="form-control mb-2" placeholder="Password">
+                    <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                </div>
+            </div>
+
+            <input class="signInBtn" type="submit" name="submit" value="Sign In">
+        </form>
+    </div>
+
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        $(document).ready(function () {
+            $('[data-toggle="tooltip"]').tooltip();
+        });
+    </script>
+</body>
+</html>

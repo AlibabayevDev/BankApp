@@ -1,0 +1,61 @@
+﻿@using BankApp.WebAdminPanel.Models.Employee
+
+@model SaveEmployeeViewModel
+
+<div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <!-- Modal content -->
+    <div class="modal-content" id="editDebtModelBody">
+        <div style="overflow:auto;" class="modal-body">
+            <form asp-controller="Employee" asp-action="Save" class="form-group">
+                <input hidden asp-for="Employee.Id"/>
+
+               <div class="form-group">
+                    <label for="name" class="mr-sm-2">Name:</label>
+                    <input asp-for="Employee.FirstName" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="Employee.FirstName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">Surname:</label>
+                    <input asp-for="Employee.Surname" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="Employee.Surname" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">Phone:</label>
+                    <input asp-for="Employee.Phone" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="Employee.Phone" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">Speciality:</label>
+                    <input asp-for="Employee.Speciality" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="Employee.Speciality" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">Salary:</label>
+                    <input asp-for="Employee.Salary" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="Employee.Salary" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">Address:</label>
+                    <input asp-for="Employee.Address" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="Employee.Address" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">Branch:</label>
+                    <select asp-for="Employee.Branch.Id" asp-items="Model.BranchList" class="form-control mb-2 mr-sm-2">
+
+                    </select>
+                    <span asp-validation-for="Employee.Branch.BranchName" class="text-danger"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary bgupdate">Save</button>
+                </div> 
+            </form>
+        </div>
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial"/>

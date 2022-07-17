@@ -1,0 +1,46 @@
+﻿@using BankApp.WebAdminPanel.Models.Card
+
+
+@model SaveCardViewModel
+
+<div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <!-- Modal content -->
+    <div class="modal-content" id="editDebtModelBody">
+        <div style="overflow:auto;" class="modal-body">
+            <form asp-controller="Card" asp-action="Save" class="form-group">
+                <input hidden asp-for="Card.Id"/>
+
+               <div class="form-group">
+                    <label for="name" class="mr-sm-2">Client:</label>
+                    <select asp-for="Card.Client.Id"  asp-items="Model.CardList" class="form-control mb-2 mr-sm-2">
+                    </select>
+                    <span asp-validation-for="Card.Client" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">Type card:</label>
+                    <input asp-for="Card.TypeCard" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="Card.TypeCard" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">Card number:</label>
+                    <input asp-for="Card.CardNumber" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="Card.CardNumber" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">End date:</label>
+                    <input asp-for="Card.EndDate" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="Card.EndDate" class="text-danger"></span>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary bgupdate">Save</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial"/>

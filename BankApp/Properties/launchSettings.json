@@ -1,0 +1,11 @@
+{
+  "profiles": {
+    "BankApp.AdminPanel": {
+      "commandName": "Project",
+      "remoteDebugEnabled": false
+    },
+    "Профиль 1": {
+      "commandName": "Executable"
+    }
+  }
+}

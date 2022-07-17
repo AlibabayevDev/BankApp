@@ -1,0 +1,97 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\Background.jpg" />
+    <None Remove="Images\Excell.png" />
+    <None Remove="Images\icons8-оценить-50.png" />
+    <None Remove="Images\Icons_AccountNumber\AddClient.png" />
+    <None Remove="Images\Icons_AccountNumber\Cancel.png" />
+    <None Remove="Images\Icons_AccountNumber\CreditCard.jpg" />
+    <None Remove="Images\Icons_AccountNumber\Delete-Client.png" />
+    <None Remove="Images\Icons_AccountNumber\Editor.jpg" />
+    <None Remove="Images\Icons_AccountNumber\Redact.jpg" />
+    <None Remove="Images\Icons_AccountNumber\Restore-button.png" />
+    <None Remove="Images\Icons_AccountNumber\Save-button.png" />
+    <None Remove="Images\Icons_AccountNumber\Search-button.png" />
+    <None Remove="Images\Icons_AccountNumber\search_client.png" />
+    <None Remove="Images\Icons_Login\background_main1.jpg" />
+    <None Remove="Images\Icons_Login\businessman.png" />
+    <None Remove="Images\Icons_Login\email.png" />
+    <None Remove="Images\Icons_Login\password.png" />
+    <None Remove="Images\Icons_Menu\Account-number.png" />
+    <None Remove="Images\Icons_Menu\BankLogo.jpg" />
+    <None Remove="Images\Icons_Menu\Branch.png" />
+    <None Remove="Images\Icons_Menu\Credit-card.png" />
+    <None Remove="Images\Icons_Menu\Credit.png" />
+    <None Remove="Images\Icons_Menu\Employee.png" />
+    <None Remove="Images\Icons_Menu\Exchange.png" />
+    <None Remove="Images\Main_Icon.png" />
+    <None Remove="Images\Search.png" />
+    <None Remove="Images\WordLogo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <WrapperTool>tlbimp</WrapperTool>
+      <VersionMinor>7</VersionMinor>
+      <VersionMajor>8</VersionMajor>
+      <Guid>00020905-0000-0000-c000-000000000046</Guid>
+      <Lcid>0</Lcid>
+      <Isolated>false</Isolated>
+      <EmbedInteropTypes>true</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="ClosedXML" Version="0.95.4" />
+    <PackageReference Include="DevExpress.Data" Version="21.2.7" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BankApp.Core\BankApp.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\Background.jpg" />
+    <Resource Include="Images\Excell.png" />
+    <Resource Include="Images\icons8-оценить-50.png" />
+    <Resource Include="Images\Icons_AccountNumber\AddClient.png" />
+    <Resource Include="Images\Icons_AccountNumber\Cancel.png" />
+    <Resource Include="Images\Icons_AccountNumber\CreditCard.jpg" />
+    <Resource Include="Images\Icons_AccountNumber\Delete-Client.png" />
+    <Resource Include="Images\Icons_AccountNumber\Editor.jpg" />
+    <Resource Include="Images\Icons_AccountNumber\Redact.jpg" />
+    <Resource Include="Images\Icons_AccountNumber\Restore-button.png" />
+    <Resource Include="Images\Icons_AccountNumber\Save-button.png" />
+    <Resource Include="Images\Icons_AccountNumber\Search-button.png" />
+    <Resource Include="Images\Icons_AccountNumber\search_client.png" />
+    <Resource Include="Images\Icons_Login\background_main1.jpg" />
+    <Resource Include="Images\Icons_Login\businessman.png" />
+    <Resource Include="Images\Icons_Login\email.png" />
+    <Resource Include="Images\Icons_Login\password.png" />
+    <Resource Include="Images\Icons_Menu\Account-number.png" />
+    <Resource Include="Images\Icons_Menu\BankLogo.jpg" />
+    <Resource Include="Images\Icons_Menu\Branch.png" />
+    <Resource Include="Images\Icons_Menu\Credit-card.png" />
+    <Resource Include="Images\Icons_Menu\Credit.png" />
+    <Resource Include="Images\Icons_Menu\Employee.png" />
+    <Resource Include="Images\Icons_Menu\Exchange.png" />
+    <Resource Include="Images\Main_Icon.png" />
+    <Resource Include="Images\Search.png" />
+    <Resource Include="Images\WordLogo.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Sablon.doc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>

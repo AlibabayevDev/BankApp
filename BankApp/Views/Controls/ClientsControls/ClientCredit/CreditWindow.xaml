@@ -1,0 +1,161 @@
+﻿<Window x:Class="BankApp.AdminPanel.Views.Controls.ClientsControls.CreditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:controls="clr-namespace:BankApp.AdminPanel.ViewModel.Controls" xmlns:clientcontrols="clr-namespace:BankApp.AdminPanel.ViewModel.Controls.ClientControls" xmlns:components="clr-namespace:BankApp.AdminPanel.Views.Components" d:DataContext="{d:DesignInstance Type=clientcontrols:ClientCreditViewModel}"
+        mc:Ignorable="d"
+        Title="CreditWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize"  Height="600" Width="1000">
+    <Grid >
+        <Grid  HorizontalAlignment="Left" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="60"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <components:ControlHeader/>
+                <components:ErrorDialog Height="0" x:Name="ErrorDialog"/>
+            </Grid>
+            <Grid Grid.Row="1" Width="auto">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Grid Grid.Column="0">
+                    <Button Command="{Binding OpenPay}" >
+                        Pay Credit
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <Button Command="{Binding ClearMainControl}" >
+                        <Image Height="50" Width="50" Source="\Images\Icons_AccountNumber\AddClient.png" Margin="0,0,0,0"/>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="2">
+                    <Button Command="{Binding Delete}"  Name="Delete">
+                        <Image VerticalAlignment="Top" Height="45" Width="50" Source="\Images\Icons_AccountNumber\Delete-Client.png"/>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="3">
+                    <Button Command="{Binding OpenClientControl}" >
+                        <Image VerticalAlignment="Top" Height="50" Width="50" Source="\Images\Icons_AccountNumber\Search-button.png"/>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="4">
+                    <Button Command="{Binding Edit}" >
+                        <Image VerticalAlignment="Top" Height="50" Width="50"  Source="\Images\Icons_AccountNumber\Editor.jpg"/>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="5">
+                    <Button Command="{Binding ExportExcel}" >
+                        <Image Height="50" Width="100" Source="\Images\Excell.png"/>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="6">
+                    <Button Command="{Binding Sablon}" >
+                        <Image Height="50" Width="100" Source="\Images\WordLogo.jpg"/>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="7">
+                    <Button Command="{Binding ClientCard}" >
+                        <Image Height="50" Width="100" Source="\Images\Icons_AccountNumber\CreditCard.jpg"/>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="8">
+                    <Button Command="{Binding Credit}" >
+                        Kredit
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="9">
+                    <Button Command="{Binding Restore}" >
+                        <Image Height="50" Width="70" Source="\Images\Icons_AccountNumber\Restore-button.png"/>
+                    </Button>
+                </Grid>
+                <Grid Grid.Column="11">
+                    <Button Command="{Binding Cancel}">
+                        <Image Height="50" Width="50" Source="\Images\Icons_AccountNumber\Cancel.png"/>
+                    </Button>
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="2"  Name="CenterGrid" Width="1000">
+                <ListView x:Name="MainList" Grid.Row="1" ItemsSource="{Binding Credits}"  Style="{StaticResource listViewCustom}"
+                      SelectedItem="{Binding CurrentValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                    <ListView.View>
+                        <GridView >
+                            <GridViewColumn DisplayMemberBinding="{Binding Path=NO}" Header="No"  Width="Auto"/>
+                            <GridViewColumn Header="Client" Width="Auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Credit.Client.Name}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Amount" Width="Auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Credit.Amount}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Credit percent" Width="Auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=CreditPercent}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Amount return" Width="Auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Credit.AmountReturn}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Given date" Width="Auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=Credit.GiveDate}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+                            <GridViewColumn Header="Return date" Width="Auto">
+                                <GridViewColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <TextBlock Text="{Binding Path=ReturnDate}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                    </DataTemplate>
+                                </GridViewColumn.CellTemplate>
+                            </GridViewColumn>
+
+                        </GridView>
+                    </ListView.View>
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem  Header="Edit" Command="{Binding Path = Save}" Height="30" Width="200"/>
+                            <MenuItem  Header="Delete" Command="{Binding Path = Delete}" Height="30" Width="200" />
+                            <MenuItem  Header="UnSelect" Command="{Binding Path = Reject}" Height="30" Width="200" />
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+                </ListView>
+
+            </Grid>
+        </Grid>
+
+
+
+
+
+    </Grid>
+</Window>

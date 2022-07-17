@@ -1,0 +1,142 @@
+﻿<UserControl x:Class="BankApp.AdminPanel.Views.Controls.CreditControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:components="clr-namespace:BankApp.AdminPanel.Views.Components"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Border Background="DarkGray" BorderThickness="5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <StackPanel Grid.Row="0">
+                <components:ControlHeader/>
+                <components:ErrorDialog Height="0" x:Name="ErrorDialog"/>
+
+                <Grid Background="LightGray" >
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="5*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid Grid.Column="0" Style="{StaticResource grdForm}">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="0.1*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <StackPanel Grid.Column="0">
+                            <TextBlock Height="25" FontSize="15" Margin="5 5">Amount</TextBlock>
+                            <TextBlock Height="25" FontSize="15" Margin="5 5">Credit percent</TextBlock>
+                            <TextBlock Height="25" FontSize="15" Margin="5 5">Return date</TextBlock>
+                            <TextBlock Height="25" FontSize="15" Margin="5 5">Branch</TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="1">
+                            <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentValue.Amount,Mode=TwoWay}"/>
+                            <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentValue.CreditPercent,Mode=TwoWay}"/>
+                            <DatePicker FontSize="15" Height="25" Width="300" HorizontalAlignment="Left" Margin="5 5" Text ="{Binding CurrentValue.ReturnDate, Mode=TwoWay}"/>
+                            <ComboBox ItemsSource="{Binding Path = Branches}" SelectedItem="{Binding Path=SelectedBranch}" SelectedValue="{Binding Path=SelectedBranch.Id}" SelectedValuePath="Id" DisplayMemberPath="BranchName" FontSize="15" Width="300" Height="25" Margin="5 5" HorizontalAlignment="Left"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2">
+                            <TextBlock Height="25" FontSize="15" Margin="5 5">Amount return</TextBlock>
+                            <TextBlock Height="25" FontSize="15" Margin="5 5">Give date</TextBlock>
+                            <TextBlock Height="25" FontSize="15" Margin="5 5">Client</TextBlock>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="3">
+                            <TextBox FontSize="15" Height="25" Margin="5 5" Text="{Binding CurrentValue.AmountReturn,Mode=TwoWay}"/>
+                            <DatePicker FontSize="15" Height="25" Width="300" HorizontalAlignment="Left" Margin="5 5" Text ="{Binding CurrentValue.GiveDate, Mode=TwoWay}"/>
+                            <ComboBox ItemsSource="{Binding Path = Clients}" SelectedItem="{Binding Path=SelectedClient}"  SelectedValue="{Binding Path=SelectedClient.Id}" SelectedValuePath="Id" DisplayMemberPath="Name" Width="300" FontSize="15" Height="25" Margin="5 5" HorizontalAlignment="Left"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <StackPanel Grid.Column="1">
+                        <components:FormButton/>
+                    </StackPanel>
+                </Grid>
+            </StackPanel>
+
+            <ListView x:Name="MainList" Grid.Row="1" ItemsSource="{Binding Values}"  Style="{StaticResource listViewCustom}"
+                      SelectedItem="{Binding SelectedValue,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                <ListView.View>
+                    <GridView >
+                        <GridViewColumn DisplayMemberBinding="{Binding Path=NO}" Header="No"  Width="Auto"/>
+                        <GridViewColumn Header="Client" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Client}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Branch" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Branch}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Amount" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=Amount}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Credit percent" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=CreditPercent}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Amount return" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=AmountReturn}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Given date" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=GiveDate}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                        <GridViewColumn Header="Return date" Width="Auto">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <TextBlock Text="{Binding Path=ReturnDate}" HorizontalAlignment="Center" Style="{StaticResource gridViewTextColumn}"/>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                
+                    </GridView>
+                </ListView.View>
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem  Header="Edit" Command="{Binding Path = Save}" Height="30" Width="200"/>
+                        <MenuItem  Header="Delete" Command="{Binding Path = Delete}" Height="30" Width="200" />
+                        <MenuItem  Header="UnSelect" Command="{Binding Path = Reject}" Height="30" Width="200" />
+                    </ContextMenu>
+                </ListView.ContextMenu>
+            </ListView>
+
+            <Grid Grid.Row="2" Style="{StaticResource grdSearch}">
+                <DockPanel>
+                    <components:Excel Height="35" Margin="1"/>
+                </DockPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</UserControl>

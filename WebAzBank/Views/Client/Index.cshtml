@@ -1,0 +1,116 @@
+﻿@using WebAzBank.Models.Client
+@model ClientViewModel
+
+@{
+    ViewData["Title"] = "Clients";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section HeadArea
+{
+<title>Banks</title>
+}
+
+<div class="dataContainer mb-3 mt-3">
+    <h1 style="text-align: center;">@ViewData["Title"]</h1>
+
+    <table id="ClientTable" class="table table-striped table-bordered tbl" style="width:100%">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Father Name</th>
+                <th>FIN</th>
+                <th>Seriya</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Adress</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var client in Model.Clients)
+            {
+                <tr>
+                    <td>@client.No</td>
+                    <td>@client.Name</td>
+                    <td>@client.Surname</td>
+                    <td>@client.FatherName</td>
+                    <td>@client.FIN</td>
+                    <td>@client.Seriya</td>
+                    <td>@client.Phone</td>
+                    <td>@client.Email</td>
+                    <td>@client.Adress</td>
+                    <td><button class="btn btn-primary bgupdate" onclick="ShowSaveModal(this)" data-id="@client.Id" data-target="#myModalAdd" id="btnUpdate"><i class='fas fa-download'></i> Update</button></td>
+                    <td><button class="btn btn-danger bgdelete" onclick="ShowDeleteModal(this)" data-toggle="modal" data-id="@client.Id" data-target="#DelModal" id="btnDel"><i class='fas fa-trash-alt'></i> Delete</button></td>
+                </tr>
+            }
+        </tbody>
+
+        <tfoot>
+            <tr>
+                <th>No</th>
+                <th>Name</th>
+                <th>Surname</th>
+                <th>Father Name</th>
+                <th>FIN</th>
+                <th>Seriya</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Adress</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </tfoot>
+    </table>
+
+    <button class="btn btn-primary bgupdate" onclick="ShowSaveModal(this)" data-toggle="modal" data-id="0" id="myBtnAdd"><i class='fas fa-download'></i> Add</button>
+
+    @section ScriptArea
+    {
+    <script>
+
+        function ShowDeleteModal(elem) {
+            var dataId = $(elem).data("id");
+            $(".deletedId").val(dataId);
+        }
+
+        function ShowSaveModal(elem) {
+            var dataId = $(elem).data("id");
+
+            $.ajax({
+                url: "/Bank/Save?id=" + dataId,
+                success: function (data) {
+                    $('#createModal').html(data);
+                    $("#createModal").modal("show");
+                },
+                error : function(error) {
+                    console.log(error);
+                }
+            });
+        }
+
+        $(document).ready(function () {
+
+            $('#ClientTable tfoot th').each(function () {
+                var title = $(this).text();
+                $(this).html('<input type="text" placeholder="Search" style="width:100%;" />');
+            });
+
+            var table = $('#ClientTable').DataTable();
+
+            table.columns().every(function () {
+                var that = this;
+
+                $('input', this.footer()).on('keyup change clear', function () {
+                    if (that.search() !== this.value) {
+                        that.search(this.value).draw();
+                    }
+                });
+            });
+        });
+    </script>
+    }

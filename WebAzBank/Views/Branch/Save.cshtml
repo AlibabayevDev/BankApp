@@ -1,0 +1,55 @@
+﻿@using BankApp.WebAzBank.Model
+
+@model BranchModel
+
+<div class="modal-dialog modal-dialog-scrollable modal-lg">
+    <!-- Modal content -->
+    <div class="modal-content" id="editDebtModelBody">
+        <div style="overflow:auto;" class="modal-body">
+            <form asp-controller="Branch" asp-action="Save" class="form-group">
+                <input hidden asp-for="Id"/>
+
+               <div class="form-group">
+                    <label for="name" class="mr-sm-2">Name:</label>
+                    <input asp-for="BranchName" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="BranchName" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">Adress:</label>
+                    <input asp-for="Adress" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="Adress" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">Phone:</label>
+                    <input asp-for="Phone" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">BeginWorkTime:</label>
+                    <input asp-for="BeginWorkTime" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="BeginWorkTime" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">EndWorkTime:</label>
+                    <input asp-for="EndWorkTime" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="EndWorkTime" class="text-danger"></span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="name" class="mr-sm-2">CountWorkers:</label>
+                    <input asp-for="CountWorkers" class="form-control mb-2 mr-sm-2" />
+                    <span asp-validation-for="CountWorkers" class="text-danger"></span>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary bgupdate">Save</button>
+                </div> 
+            </form>
+        </div>
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial"/>
