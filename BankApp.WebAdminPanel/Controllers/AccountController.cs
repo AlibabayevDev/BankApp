@@ -21,7 +21,10 @@ namespace BankApp.WebAdminPanel.Controllers
         {
             return View();
         }
-
+        public IActionResult Index()
+        {
+            return View();
+        }
         public IActionResult sil(int id)
         {
             return Content("id = "+ id);

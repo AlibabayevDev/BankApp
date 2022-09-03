@@ -21,9 +21,9 @@ namespace BankApp
         {
             Dispatcher.UnhandledException += HandleException;
 
-            string connectionString = null;
+            string connectionString = "Data Source=LAPTOP-8TIN9OH7;Initial Catalog=db_a8537b_bank;Integrated Security=true;";
 
-            string path = @"C:\Users\Predator\Desktop\C#\test.txt";
+            /*string path = @"C:\Users\Predator\Desktop\C#\test.txt";
             if (File.Exists(path))
             {
                 connectionString = File.ReadAllText(path);
@@ -35,7 +35,7 @@ namespace BankApp
                 string path2 = @"C:\Users\Predator\Desktop\test2.txt";
 
                 File.AppendAllText(path2, connectText);
-            }
+            }*/
 
 
 

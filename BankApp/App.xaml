@@ -249,11 +249,6 @@
             </Style.Triggers>
         </Style>
         
-        
-        
-        
-        
-
         <Style TargetType="{x:Type Button}" x:Key="btnClienSave">
             <Setter Property="Content" Value="Add"/>
             <Setter Property="IsEnabled" Value="True"/>
@@ -403,7 +398,5 @@
                 </DataTrigger>
             </Style.Triggers>
         </Style>
-
-
     </Application.Resources>
 </Application>
