@@ -1,12 +1,6 @@
 ﻿@{
 	Layout = "~/Views/Shared/_Layout.cshtml";
 }
-@using TexnoStore.Models
-@using TexnoStore.Models.Phones
-@using TexnoStore.Models.Cameras
-
-@model AllProductsListViewModel
-
 @section HeadArea
 {
 
@@ -70,12 +64,6 @@
 							<div class="products-tabs">
 								<div id="tab1" class="tab-pane active">
 									<div class="products-slick" data-nav="#slick-nav-1">
-										@{
-											foreach(var produc in Model.Products)
-											{
-												@Html.Partial("AllProducts",produc)
-											}
-										}
 									</div>
 									<div id="slick-nav-1" class="products-slick-nav"></div>
 								</div>
